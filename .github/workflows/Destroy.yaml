@@ -15,7 +15,7 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.5.0
+        terraform_version: 1.8.4
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -32,6 +32,9 @@ jobs:
 
     - name: Verify Plan File
       run: test -f tfplan
+
+    - name: Output Plan for Debugging
+      run: terraform show -json tfplan | jq .
 
     - name: Terraform Apply (Destroy)
       run: terraform apply -auto-approve tfplan
