@@ -2,13 +2,7 @@ name: Terraform Plan and Apply for AWS
 
 # Ejecuta el workflow en pull requests y cuando se hace merge a la rama main
 on:
-  pull_request:
-    branches:
-      - main
-
-  push:
-    branches:
-      - main
+  workflow_dispatch: # Permite iniciar manualmente el workflow desde la UI de GitHub
 
 jobs:
   terraform:
